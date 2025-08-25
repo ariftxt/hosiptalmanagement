@@ -1,0 +1,2 @@
+# hosiptalmanagement
+Hospital management project
