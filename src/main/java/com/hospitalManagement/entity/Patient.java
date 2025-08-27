@@ -9,16 +9,22 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(
         name = "patient",
         uniqueConstraints = {
@@ -51,5 +57,13 @@ public class Patient {
 
     @Enumerated(EnumType.STRING)
     private BloodGroupType bloodGroup;
+
+    @OneToOne
+    @JoinColumn(name = "insuranceId", unique = true) // owning side.
+    // Column 'insuranceId' will create here as a Fk
+    private Insurance insurance;
+
+    @OneToMany(mappedBy = "patient") //inverse side. No FK here. To make single source of tooth
+    private List<Appointment> appointments;
 
 }
