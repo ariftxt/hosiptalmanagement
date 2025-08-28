@@ -9,20 +9,22 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
+@ToString
 @Getter
 @Setter
-@RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "appointment")
+@Builder
 public class Appointment {
 
     @Id
@@ -40,7 +42,7 @@ public class Appointment {
     // Column 'patientId' will create here as a Fk
     private Patient patient;
 
-    @ManyToOne // inverse side
+    @ManyToOne
     @JoinColumn(name = "doctor_id", nullable = false) // owning side.
     private Doctor doctor;
 }

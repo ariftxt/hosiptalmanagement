@@ -1,6 +1,7 @@
 package com.hospitalManagement.entity;
 
 import com.hospitalManagement.enums.BloodGroupType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -16,12 +17,14 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@ToString
 @Entity
 @Getter
 @Setter
@@ -58,12 +61,14 @@ public class Patient {
     @Enumerated(EnumType.STRING)
     private BloodGroupType bloodGroup;
 
-    @OneToOne
+    // orphanRemoval = true -> when unmapped insurance with patient then that insurance will delete from db.
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @JoinColumn(name = "insuranceId", unique = true) // owning side.
     // Column 'insuranceId' will create here as a Fk
     private Insurance insurance;
 
-    @OneToMany(mappedBy = "patient") //inverse side. No FK here. To make single source of tooth
+    @OneToMany(mappedBy = "patient")//inverse side. No FK here. To make single source of tooth
+    @ToString.Exclude
     private List<Appointment> appointments;
 
 }
