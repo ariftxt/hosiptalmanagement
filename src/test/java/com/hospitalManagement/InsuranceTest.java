@@ -5,11 +5,10 @@ import com.hospitalManagement.entity.Patient;
 import com.hospitalManagement.service.InsuranceService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 
-@SpringBootTest
+//@SpringBootTest
 public class InsuranceTest {
 
     @Autowired

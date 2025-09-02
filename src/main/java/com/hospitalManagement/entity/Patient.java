@@ -1,5 +1,6 @@
 package com.hospitalManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hospitalManagement.enums.BloodGroupType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -65,10 +66,11 @@ public class Patient {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @JoinColumn(name = "insuranceId", unique = true) // owning side.
     // Column 'insuranceId' will create here as a Fk
+    @JsonIgnore
     private Insurance insurance;
 
     @OneToMany(mappedBy = "patient")//inverse side. No FK here. To make single source of tooth
-    @ToString.Exclude
+    @JsonIgnore
     private List<Appointment> appointments;
 
 }

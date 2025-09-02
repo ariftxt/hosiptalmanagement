@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +34,7 @@ public class Department {
     @Column(nullable = false, unique = true, length = 100)
     private String name;
 
+    @ToString.Exclude
     @OneToOne // owning side
     private Doctor hod; // head of department
 
@@ -42,6 +44,7 @@ public class Department {
             joinColumns = @JoinColumn(name = "dept_id"),
             inverseJoinColumns = @JoinColumn(name = "doctor_id")
     )
+    @ToString.Exclude
     private Set<Doctor> doctors = new HashSet<>();
 
 }

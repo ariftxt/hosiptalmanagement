@@ -4,11 +4,10 @@ import com.hospitalManagement.entity.Appointment;
 import com.hospitalManagement.service.AppointmentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 
-@SpringBootTest
+//@SpringBootTest
 public class AppointmentTest {
 
     @Autowired

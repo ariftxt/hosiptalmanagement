@@ -12,11 +12,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -38,9 +40,11 @@ public class Doctor {
     @Column(unique = true, length = 100)
     private String email;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "doctor") // inverse side
     private List<Appointment> appointments;
 
+    @ToString.Exclude
     @ManyToMany(mappedBy = "doctors")
     private Set<Department> departments = new HashSet<>();
 

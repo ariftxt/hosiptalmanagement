@@ -19,6 +19,15 @@ spring:
       mode: NEVER
       data-locations: classpath:data.sql
 
+  security:
+    user:
+      name: ali
+      password: 12345
+
 logging:
   level:
     org.hibernate.SQL: DEBUG
+
+server:
+  servlet:
+    context-path: /api/v1

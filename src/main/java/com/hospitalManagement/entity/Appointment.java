@@ -1,5 +1,6 @@
 package com.hospitalManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,11 +38,13 @@ public class Appointment {
     @Column(length = 500)
     private String reason;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "patientId", nullable = false) // owning side.
     // Column 'patientId' will create here as a Fk
     private Patient patient;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "doctor_id", nullable = false) // owning side.
     private Doctor doctor;
