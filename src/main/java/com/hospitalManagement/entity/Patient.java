@@ -1,6 +1,8 @@
 package com.hospitalManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hospitalManagement.enums.BloodGroupType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,16 +11,24 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
+@ToString
 @Entity
-@Data
+@Getter
+@Setter
 @Table(
         name = "patient",
         uniqueConstraints = {
@@ -51,5 +61,16 @@ public class Patient {
 
     @Enumerated(EnumType.STRING)
     private BloodGroupType bloodGroup;
+
+    // orphanRemoval = true -> when unmapped insurance with patient then that insurance will delete from db.
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    @JoinColumn(name = "insuranceId", unique = true) // owning side.
+    // Column 'insuranceId' will create here as a Fk
+    @JsonIgnore
+    private Insurance insurance;
+
+    @OneToMany(mappedBy = "patient")//inverse side. No FK here. To make single source of tooth
+    @JsonIgnore
+    private List<Appointment> appointments;
 
 }
