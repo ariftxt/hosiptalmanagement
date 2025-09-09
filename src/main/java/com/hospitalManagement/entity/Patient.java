@@ -73,4 +73,8 @@ public class Patient {
     @JsonIgnore
     private List<Appointment> appointments;
 
+    @OneToOne
+    @JoinColumn(name = "userId", unique = true, nullable = true) // owning side
+    private User user;
+
 }
