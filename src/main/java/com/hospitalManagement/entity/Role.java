@@ -1,5 +1,6 @@
 package com.hospitalManagement.entity;
 
+import com.hospitalManagement.enums.RoleType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
