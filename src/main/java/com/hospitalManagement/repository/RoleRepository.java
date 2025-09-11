@@ -1,6 +1,6 @@
 package com.hospitalManagement.repository;
 
-import com.hospitalManagement.entity.RoleType;
+import com.hospitalManagement.enums.RoleType;
 import com.hospitalManagement.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

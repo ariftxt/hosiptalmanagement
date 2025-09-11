@@ -6,7 +6,7 @@ import com.hospitalManagement.dto.RoleRequestDTO;
 import com.hospitalManagement.dto.UserDTO;
 import com.hospitalManagement.entity.Permission;
 import com.hospitalManagement.entity.Role;
-import com.hospitalManagement.entity.RoleType;
+import com.hospitalManagement.enums.RoleType;
 import com.hospitalManagement.entity.User;
 import com.hospitalManagement.enums.PermissionType;
 import com.hospitalManagement.mapper.UserMapper;

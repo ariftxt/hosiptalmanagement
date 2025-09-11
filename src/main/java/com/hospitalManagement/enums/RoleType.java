@@ -1,4 +1,4 @@
-package com.hospitalManagement.entity;
+package com.hospitalManagement.enums;
 
 public enum RoleType {
     ADMIN,

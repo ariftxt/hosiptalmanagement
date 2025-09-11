@@ -4,7 +4,7 @@ import com.hospitalManagement.dto.CustomUserDetail;
 import com.hospitalManagement.dto.LoginResponseDTO;
 import com.hospitalManagement.dto.UserDTO;
 import com.hospitalManagement.dto.UserRequestDTO;
-import com.hospitalManagement.entity.RoleType;
+import com.hospitalManagement.enums.RoleType;
 import com.hospitalManagement.entity.User;
 import com.hospitalManagement.entity.Role;
 import com.hospitalManagement.enums.AuthProviderType;
